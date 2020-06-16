@@ -1,2 +1,3 @@
 # visualize-html-canvas-translation
-visualizing htm5 canvas translatio
+visualizing htm5 canvas translation.
+get a better understanding of the translation property by viewing this example
