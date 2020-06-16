@@ -1,0 +1,80 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+canvas {
+  border: solid 1px black;
+  display: block;
+  margin: 0 auto;
+}
+h1 {
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+p {
+  margin: 15px auto;
+  text-align: center;
+  font-size: 20px;
+}
+
+#btn {
+  background-color: #337ebf; /* Green */
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  padding: 10px 24px;
+  outline: nones;
+  margin: 0 auto;
+  display: block;
+}
+
+aside {
+  text-align: center;
+}
+
+#translate {
+  margin-top: 20px;
+  font-size: 30px;
+  margin-right: 30px;
+}
+
+.matrix {
+  position: relative;
+}
+body {
+  padding: 20px;
+}
+.matrix:before,
+.matrix:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  border: 1px solid #000;
+  width: 6px;
+  height: 100%;
+}
+.matrix:before {
+  left: -6px;
+  border-right: 0px;
+}
+.matrix:after {
+  right: -6px;
+  border-left: 0px;
+}
+.matrix td {
+  padding: 5px;
+  text-align: center;
+}
+
+.wrapper {
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+}
