@@ -4,8 +4,9 @@ canvas.width = CANVAS_SIZE;
 canvas.height = CANVAS_SIZE;
 /** @type {CanvasRenderingContext2D} */
 const ctx = canvas.getContext("2d");
-const template = (x1, y1) => `ctx.translate(${x1},${y1});<br/>drawPoint(0,0);`;
-const translatedElm = document.getElementById("translate");
+const template = (x1, y1) =>
+  `ctx.save();<br/>ctx.translate(${x1},${y1});<br/>drawPoint(0,0);<br/>ctx.restore();`;
+const translatedElm = document.getElementById("translate-c");
 const tx = document.getElementById("tx");
 const ty = document.getElementById("ty");
 const btn = document.getElementById("btn");
@@ -44,9 +45,14 @@ const drawTranslatedPoint = (x, y) => {
 };
 let x = 0;
 let y = cellSize;
-
+let intervalId;
 btn.onclick = () => {
-  setInterval(() => {
+  if (intervalId) {
+    clearInterval(intervalId);
+    x = 0;
+    y = cellSize;
+  }
+  intervalId = setInterval(() => {
     ctx.clearRect(0, 0, innerWidth, innerHeight);
     drawGrid(cellSize);
     drawTranslatedPoint(x, y);
@@ -58,5 +64,5 @@ btn.onclick = () => {
       y += cellSize;
       x = 0;
     }
-  }, 1000);
+  }, 750);
 };

@@ -11,33 +11,46 @@
     <p>
       Basically it moves the origin to a new x,y coordinates.<br />Each time we
       translate the coordinates system to a new point and draw in 0,0.<br />
-      <aside>*This
-      process is done by using the translation matrix beahind the seen as seen
-      below</aside>
     </p>
-    <canvas></canvas>
-    <div class="wrapper">
-      <div id="translate">ctx.translate(tx,ty);<br />drawPoint(0,0);</div>
-      <div align="center">
-        <table class="matrix">
-          <tr>
-            <td>1</td>
-            <td>0</td>
-            <td id="tx">tx</td>
-          </tr>
-          <tr>
-            <td>0</td>
-            <td>1</td>
-            <td id="ty">ty</td>
-          </tr>
-          <tr>
-            <td>0</td>
-            <td>0</td>
-            <td>1</td>
-          </tr>
-        </table>
+    <aside>
+      *This process is done by using the translation matrix beahind the seen as
+      seen below
+    </aside>
+    <aside>*Using save and restore between each call</aside>
+    <div class="canvas-wrapper">
+      <div id="translate">
+        <div class="code">
+          <code id="translate-c">
+            <span
+              >ctx.save();<br />ctx.translate(tx,ty);<br />drawPoint(0,0);<br />ctx.restore();</span
+            >
+          </code>
+        </div>
+        <div class="wrapper">
+          <div>
+            <table class="matrix">
+              <tr>
+                <td>1</td>
+                <td>0</td>
+                <td id="tx">tx</td>
+              </tr>
+              <tr>
+                <td>0</td>
+                <td>1</td>
+                <td id="ty">ty</td>
+              </tr>
+              <tr>
+                <td>0</td>
+                <td>0</td>
+                <td>1</td>
+              </tr>
+            </table>
+          </div>
+        </div>
       </div>
+      <canvas></canvas>
     </div>
+
     <button id="btn">start</button>
 
     <script src="./index.js"></script>
