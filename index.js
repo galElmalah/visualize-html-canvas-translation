@@ -4,12 +4,23 @@ canvas.width = CANVAS_SIZE;
 canvas.height = CANVAS_SIZE;
 /** @type {CanvasRenderingContext2D} */
 const ctx = canvas.getContext("2d");
-const template = (x1, y1) =>
-  `ctx.save();<br/>ctx.translate(${x1},${y1});<br/>drawPoint(0,0);<br/>ctx.restore();`;
+let translationsCount = 0;
+const translationCountTemp = (x, y) => {
+  let str = "";
+  for (let i = 0; i < translationsCount; i++) {
+    str += `ctx.translate(${x},0);<br/>`;
+  }
+  return str;
+};
+const template = (x1 = "tx", y1 = "ty") =>
+  `ctx.save();<br/>ctx.translate(${x1},${y1});<br/>${translationCountTemp(
+    x1
+  )}drawPoint(0,0);<br/>ctx.restore();`;
 const translatedElm = document.getElementById("translate-c");
 const tx = document.getElementById("tx");
 const ty = document.getElementById("ty");
 const btn = document.getElementById("btn");
+const addTranslationBtn = document.getElementById("add-translate");
 
 const drawGrid = (cellSize) => {
   ctx.beginPath();
@@ -35,6 +46,9 @@ drawGrid(cellSize);
 const drawTranslatedPoint = (x, y) => {
   ctx.save();
   ctx.translate(x, y);
+  for (let i = 0; i < translationsCount; i++) {
+    ctx.translate(x, 0);
+  }
   ctx.beginPath();
   ctx.font = "18px Arial";
   ctx.fillText(`(${x},${y})`, 10, -10);
@@ -57,12 +71,18 @@ btn.onclick = () => {
     drawGrid(cellSize);
     drawTranslatedPoint(x, y);
     translatedElm.innerHTML = template(x, y);
-    tx.innerHTML = x;
+    tx.innerHTML = x + translationsCount * x;
     ty.innerHTML = y;
     x += cellSize;
-    if (x >= CANVAS_SIZE) {
+    if (x + x * translationsCount >= CANVAS_SIZE) {
       y += cellSize;
       x = 0;
     }
   }, 750);
+};
+
+addTranslationBtn.onclick = () => {
+  translationsCount++;
+  console.log("asd;asjd");
+  translatedElm.innerHTML = template();
 };

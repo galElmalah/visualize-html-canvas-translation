@@ -18,10 +18,7 @@ p {
   font-size: 20px;
 }
 
-#btn {
-  position: fixed;
-  bottom: 10px;
-  left: 10px;
+.btn {
   background-color: #337ebf; /* Green */
   border: none;
   color: white;
@@ -35,6 +32,15 @@ p {
   outline: nones;
   margin: 0 auto;
   display: block;
+  height: 100%;
+  margin-right: 20px;
+}
+
+.btns {
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  display: flex;
 }
 .canvas-wrapper {
   display: flex;
