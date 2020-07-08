@@ -45,13 +45,14 @@ drawGrid(cellSize);
 
 const drawTranslatedPoint = (x, y) => {
   ctx.save();
+
+  ctx.beginPath();
   ctx.translate(x, y);
   for (let i = 0; i < translationsCount; i++) {
     ctx.translate(x, 0);
   }
-  ctx.beginPath();
   ctx.font = "18px Arial";
-  ctx.fillText(`(${x},${y})`, 10, -10);
+  ctx.fillText(`(${x + translationsCount * x},${y})`, 10, -10);
   ctx.fillStyle = "#0f84eb";
   ctx.arc(0, 0, 8, 0, Math.PI * 2);
   ctx.fill();
@@ -65,6 +66,7 @@ btn.onclick = () => {
     clearInterval(intervalId);
     x = 0;
     y = cellSize;
+    translationsCount = 0;
   }
   intervalId = setInterval(() => {
     ctx.clearRect(0, 0, innerWidth, innerHeight);
@@ -83,6 +85,5 @@ btn.onclick = () => {
 
 addTranslationBtn.onclick = () => {
   translationsCount++;
-  console.log("asd;asjd");
-  translatedElm.innerHTML = template();
+  translatedElm.innerHTML = template(x || undefined, y || undefined);
 };
