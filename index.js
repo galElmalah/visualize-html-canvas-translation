@@ -80,7 +80,7 @@ btn.onclick = () => {
       y += cellSize;
       x = 0;
     }
-  }, 750);
+  }, 1250);
 };
 
 addTranslationBtn.onclick = () => {
