@@ -9,16 +9,20 @@
   <body>
     <h1>How translation work</h1>
     <p>
-      Basically it moves the origin to a new x,y coordinates.<br />Each time we
-      translate the coordinates system to a new point and draw in 0,0.<br />
+      Basically it moves the origin to a new x,y coordinates.
+    </p>
+    <p>
+      <strong>In this example -</strong>
+      Each time we translate the coordinates system to a new point and draw in
+      0,0.
     </p>
     <p>
       If we bundle a couple of translations calls together we will get a
-      translation that is the sum of all of this translations.<br />
+      translation that is the sum of all of those translations.<br />
       For example:<br />
       <code>ctx.translate(40,40);<br />ctx.translate(40,40);</code><br />
       Is equivlent to: <code>ctx.translate(80,80);</code>.<br /><br />
-      This property where transformation can be added together applies to all
+      This property, where transformation can be added together applies to all
       canvas transformations
     </p>
     <aside>
